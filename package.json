@@ -8,7 +8,7 @@
     "build": "tsc --project ./",
     "start:init": "npm i && npx prisma generate && npx prisma db push",
     "start:dev": "nodemon api/server.ts",
-    "start:prod": "node build/server.js",
+    "start:prod": "ts-node --transpileOnly -r tsconfig-paths/register api/server.ts",
     "restart:dev": "prisma generate && prisma db push --force-reset"
   },
   "dependencies": {
