@@ -1,0 +1,14 @@
+name: Fazer deploy na VPS após commit
+
+on:
+  push:
+    branches:
+      - main  # altere para a branch que deseja monitorar
+
+jobs:
+  executar-url:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Curl para executar a URL
+      run: curl -X POST http://89.116.73.154:3000/api/deploy/7ddf2dff6ff98979a1dc2da6108c0d9cffe6898a4cc442a5
