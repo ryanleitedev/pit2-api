@@ -5,6 +5,7 @@ import Joi from 'joi'
 
 export class NutricionistaController {
   static buscarClientesPorNutricionistaId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Nutricionista']
     try {
       const nutricionistaSchema = Joi.object({
         id: Joi.number().positive().allow(0).required()
@@ -21,6 +22,7 @@ export class NutricionistaController {
   }
 
   static listarNutricionistas: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Nutricionista']
     try {
       const nutricionistas = await NutricionistaService.listarNutricionistas()
       return res.status(200).json(nutricionistas)

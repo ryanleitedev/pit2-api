@@ -6,6 +6,19 @@ import Joi from 'joi'
 
 export class UsuarioClienteController {
   static login: RequestHandler = async (req, res, next) => {
+    /*
+    #swagger.tags = ['Usuário']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/usuarioClienteLogin"
+            }
+          }
+        }
+      }
+    */
     try {
       const usuarioSchema = Joi.object({
         email: Joi.string().email().required(),
@@ -21,6 +34,19 @@ export class UsuarioClienteController {
   }
 
   static cadastrar: RequestHandler = async (req, res, next) => {
+    /*
+    #swagger.tags = ['Usuário']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/usuarioClienteCadastrar"
+            }
+          }
+        }
+      }
+    */
     try {
       const usuarioSchema = Joi.object({
         email: Joi.string().email().required(),
@@ -43,6 +69,19 @@ export class UsuarioClienteController {
   }
 
   static solicitarDieta: RequestHandler = async (req, res, next) => {
+    /*
+    #swagger.tags = ['Usuário']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/usuarioClienteSolicitarDieta"
+            }
+          }
+        }
+      }
+    */
     try {
       const dietaSchema = Joi.object({
         clienteId: Joi.number().positive().required(),
@@ -62,6 +101,19 @@ export class UsuarioClienteController {
   }
 
   static atualizarPerfil: RequestHandler = async (req, res, next) => {
+    /*
+    #swagger.tags = ['Usuário']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/usuarioClienteAtualizarPerfil"
+            }
+          }
+        }
+      }
+    */
     try {
       const usuarioSchema = Joi.object({
         cliente: Joi.object({
@@ -82,6 +134,19 @@ export class UsuarioClienteController {
 
 export class UsuarioNutricionistaController {
   static login: RequestHandler = async (req, res, next) => {
+    /*
+    #swagger.tags = ['Usuário']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/usuarioNutricionistaLogin"
+            }
+          }
+        }
+      }
+    */
     try {
       const usuarioSchema = Joi.object({
         email: Joi.string().email().required(),
@@ -97,6 +162,19 @@ export class UsuarioNutricionistaController {
   }
 
   static cadastrar: RequestHandler = async (req, res, next) => {
+    /*
+    #swagger.tags = ['Usuário']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/usuarioNutricionistaCadastrar"
+            }
+          }
+        }
+      }
+    */
     try {
       const usuarioSchema = Joi.object({
         email: Joi.string().email().required(),

@@ -5,6 +5,19 @@ import Joi from 'joi'
 
 export class DietaController {
   static cadastrar: RequestHandler = async (req, res, next) => {
+      /*
+      #swagger.tags = ['Dieta']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/cadastrarDieta"
+            }
+          }
+        }
+      }
+    */
     try {
       const dietaSchema = Joi.object({
         clienteId: Joi.number().positive().required(),
@@ -34,6 +47,19 @@ export class DietaController {
     }
   }
   static atualizar: RequestHandler = async (req, res, next) => {
+     /*
+      #swagger.tags = ['Dieta']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/atualizarDieta"
+            }
+          }
+        }
+      }
+    */
     try {
       const dietaSchema = Joi.object({
         id: Joi.number().positive().required(),
@@ -61,6 +87,7 @@ export class DietaController {
   }
 
   static buscarPorId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Dieta']
     try {
       const dietaSchema = Joi.object({
         id: Joi.number().positive().required()
@@ -77,6 +104,7 @@ export class DietaController {
   }
 
   static buscarPorCliente: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Dieta']
     try {
       const dietaSchema = Joi.object({
         id: Joi.number().positive().required()

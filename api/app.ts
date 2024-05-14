@@ -1,6 +1,8 @@
 import express from 'express'
 import routes from './routes'
 import cors from 'cors'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocument from './swagger.json'
 
 class App {
   public server: express.Express
@@ -9,6 +11,7 @@ class App {
     this.server = express()
 
     this.middlewares()
+    this.swagger()
     this.routes()
   }
 
@@ -20,6 +23,10 @@ class App {
 
   routes() {
     this.server.use('/api', routes)
+  }
+
+  swagger() {
+    this.server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   }
 }
 

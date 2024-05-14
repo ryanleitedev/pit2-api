@@ -1,0 +1,899 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Life Fitness",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "https://pit2-api.pd8edx.easypanel.host/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "",
+      "description": ""
+    }
+  ],
+  "securityDefinitions": {},
+  "paths": {
+    "/health": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/usuario/cliente/login": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioClienteLogin"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/cliente/cadastrar": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioClienteCadastrar"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/cliente/solicitardieta": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioClienteSolicitarDieta"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/cliente/atualizarperfil": {
+      "put": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioClienteAtualizarPerfil"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/nutricionista/login": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioClienteLogin"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/nutricionista/cadastrar": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioClienteCadastrar"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nutricionista/": {
+      "get": {
+        "tags": [
+          "Nutricionista"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/nutricionista/clientes/{id}": {
+      "get": {
+        "tags": [
+          "Nutricionista"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/alimento/": {
+      "post": {
+        "tags": [
+          "Alimentos"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cadastrarAlimento"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Alimentos"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/alimento/lista": {
+      "post": {
+        "tags": [
+          "Alimentos"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cadastrarAlimentoLista"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alimento/{id}": {
+      "get": {
+        "tags": [
+          "Alimentos"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/alimento/dieta/{id}": {
+      "get": {
+        "tags": [
+          "Alimentos"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/dieta/": {
+      "post": {
+        "tags": [
+          "Dieta"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cadastrarDieta"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Dieta"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/atualizarDieta"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dieta/cliente/{id}": {
+      "get": {
+        "tags": [
+          "Dieta"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/dieta/{id}": {
+      "get": {
+        "tags": [
+          "Dieta"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/medidas/": {
+      "post": {
+        "tags": [
+          "Medidas"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cadastrarMedidas"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Medidas"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/atualizarMedidas"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medidas/cliente/{id}": {
+      "get": {
+        "tags": [
+          "Medidas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/medidas/progresso/cliente/{id}": {
+      "get": {
+        "tags": [
+          "Medidas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "cadastrarAlimento": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": ""
+          },
+          "calorias": {
+            "type": "number",
+            "example": 0
+          },
+          "carboidratos": {
+            "type": "number",
+            "example": 0
+          },
+          "proteinas": {
+            "type": "number",
+            "example": 0
+          },
+          "gorduras": {
+            "type": "number",
+            "example": 0
+          }
+        },
+        "required": [
+          "nome",
+          "calorias",
+          "carboidratos",
+          "proteinas",
+          "gorduras"
+        ]
+      },
+      "cadastrarAlimentoLista": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "nome": {
+              "type": "string",
+              "example": ""
+            },
+            "calorias": {
+              "type": "number",
+              "example": 0
+            },
+            "carboidratos": {
+              "type": "number",
+              "example": 0
+            },
+            "proteinas": {
+              "type": "number",
+              "example": 0
+            },
+            "gorduras": {
+              "type": "number",
+              "example": 0
+            }
+          },
+          "required": [
+            "nome",
+            "calorias",
+            "carboidratos",
+            "proteinas",
+            "gorduras"
+          ]
+        }
+      },
+      "cadastrarDieta": {
+        "type": "object",
+        "properties": {
+          "clienteId": {
+            "type": "number",
+            "example": 0
+          },
+          "objetivoFoco": {
+            "type": "string",
+            "example": ""
+          },
+          "dietaAtual": {
+            "type": "boolean",
+            "example": false
+          },
+          "alimentos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "alimentoId": {
+                  "type": "number",
+                  "example": 0
+                },
+                "horario": {
+                  "type": "string",
+                  "example": "1970-01-01T09:00:00-0"
+                },
+                "pesoGramas": {
+                  "type": "number",
+                  "example": 0
+                }
+              },
+              "required": [
+                "alimentoId",
+                "horario",
+                "pesoGramas"
+              ]
+            }
+          },
+          "nutricionista": {
+            "type": "object",
+            "properties": {
+              "nutricionistaId": {
+                "type": "number",
+                "example": 0
+              }
+            },
+            "required": [
+              "nutricionistaId"
+            ]
+          }
+        },
+        "required": [
+          "clienteId",
+          "objetivoFoco",
+          "dietaAtual",
+          "alimentos",
+          "nutricionista"
+        ]
+      },
+      "atualizarDieta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 0
+          },
+          "clienteId": {
+            "type": "number",
+            "example": 0
+          },
+          "objetivoFoco": {
+            "type": "string",
+            "example": ""
+          },
+          "dietaAtual": {
+            "type": "boolean",
+            "example": false
+          },
+          "alimentos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "alimentoId": {
+                  "type": "number",
+                  "example": 0
+                },
+                "horario": {
+                  "type": "string",
+                  "example": "1970-01-01T09:00:00-0"
+                },
+                "pesoGramas": {
+                  "type": "number",
+                  "example": 0
+                }
+              },
+              "required": [
+                "alimentoId",
+                "horario",
+                "pesoGramas"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "clienteId",
+          "objetivoFoco",
+          "dietaAtual",
+          "alimentos"
+        ]
+      },
+      "cadastrarMedidas": {
+        "type": "object",
+        "properties": {
+          "clienteId": {
+            "type": "number",
+            "example": 0
+          },
+          "altura": {
+            "type": "number",
+            "example": 0
+          },
+          "peso": {
+            "type": "number",
+            "example": 0
+          }
+        },
+        "required": [
+          "clienteId",
+          "altura",
+          "peso"
+        ]
+      },
+      "atualizarMedidas": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 0
+          },
+          "clienteId": {
+            "type": "number",
+            "example": 0
+          },
+          "altura": {
+            "type": "number",
+            "example": 0
+          },
+          "peso": {
+            "type": "number",
+            "example": 0
+          }
+        },
+        "required": [
+          "id",
+          "clienteId",
+          "altura",
+          "peso"
+        ]
+      },
+      "usuarioClienteLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "senha": {
+            "type": "string",
+            "example": ""
+          }
+        },
+        "required": [
+          "email",
+          "senha"
+        ]
+      },
+      "usuarioClienteCadastrar": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "senha": {
+            "type": "string",
+            "example": ""
+          },
+          "nome": {
+            "type": "string",
+            "example": ""
+          },
+          "sobrenome": {
+            "type": "string",
+            "example": ""
+          },
+          "telefone": {
+            "type": "string",
+            "example": ""
+          },
+          "cliente": {
+            "type": "object",
+            "properties": {
+              "objetivo": {
+                "type": "string",
+                "example": ""
+              },
+              "observacao": {
+                "type": "string",
+                "example": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "email",
+          "senha",
+          "nome",
+          "sobrenome",
+          "telefone"
+        ]
+      },
+      "usuarioClienteSolicitarDieta": {
+        "type": "object",
+        "properties": {
+          "clienteId": {
+            "type": "number",
+            "example": 0
+          },
+          "objetivoFoco": {
+            "type": "string",
+            "example": ""
+          },
+          "nutricionista": {
+            "type": "object",
+            "properties": {
+              "nutricionistaId": {
+                "type": "number",
+                "example": 0
+              }
+            },
+            "required": [
+              "nutricionistaId"
+            ]
+          }
+        },
+        "required": [
+          "clienteId",
+          "objetivoFoco",
+          "nutricionista"
+        ]
+      },
+      "usuarioClienteAtualizarPerfil": {
+        "type": "object",
+        "properties": {
+          "cliente": {
+            "type": "object",
+            "properties": {
+              "objetivo": {
+                "type": "string",
+                "example": ""
+              },
+              "observacao": {
+                "type": "string",
+                "example": ""
+              }
+            }
+          }
+        }
+      },
+      "usuarioNutricionistaLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "senha": {
+            "type": "string",
+            "example": ""
+          }
+        },
+        "required": [
+          "email",
+          "senha"
+        ]
+      },
+      "usuarioNutricionistaCadastrar": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "senha": {
+            "type": "string",
+            "example": ""
+          },
+          "nome": {
+            "type": "string",
+            "example": ""
+          },
+          "sobrenome": {
+            "type": "string",
+            "example": ""
+          },
+          "telefone": {
+            "type": "string",
+            "example": ""
+          },
+          "nutricionista": {
+            "type": "object",
+            "properties": {
+              "uf": {
+                "type": "string",
+                "example": ""
+              },
+              "crm": {
+                "type": "string",
+                "example": ""
+              },
+              "crn": {
+                "type": "string",
+                "example": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "email",
+          "senha",
+          "nome",
+          "sobrenome",
+          "telefone"
+        ]
+      }
+    }
+  }
+}

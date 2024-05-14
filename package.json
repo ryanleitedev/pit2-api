@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project ./",
-    "deploy": "npm run start:init && npm run start:prod",
+    "deploy": "npm run docs && npm run start:init && npm run start:prod",
+    "docs": "node ./api/utils/swaggerAutogen.ts",
     "start:init": "npm i && npx prisma generate && npx prisma db push",
     "start:dev": "nodemon api/server.ts",
     "start:prod": "ts-node --transpileOnly -r tsconfig-paths/register api/server.ts",
@@ -16,7 +17,8 @@
     "@prisma/client": "^5.13.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "joi": "^17.13.0"
+    "joi": "^17.13.0",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -24,6 +26,7 @@
     "@types/node": "^20.12.7",
     "nodemon": "^3.1.0",
     "prisma": "^5.13.0",
+    "swagger-autogen": "^2.23.7",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5"

@@ -5,6 +5,19 @@ import Joi from 'joi'
 
 export class AlimentoController {
   static cadastrar: RequestHandler = async (req, res, next) => {
+    /*
+      #swagger.tags = ['Alimentos']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/cadastrarAlimento"
+            }
+          }
+        }
+      }
+    */
     try {
       const alimentoSchema = Joi.object({
         nome: Joi.string().required(),
@@ -24,6 +37,19 @@ export class AlimentoController {
     }
   }
   static cadastrarLista: RequestHandler = async (req, res, next) => {
+    /*
+      #swagger.tags = ['Alimentos']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/cadastrarAlimentoLista"
+            }
+          }
+        }
+      }
+    */
     try {
       const alimentoSchema = Joi.array().items(
         Joi.object({
@@ -45,6 +71,7 @@ export class AlimentoController {
     }
   }
   static listarTodos: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Alimentos']
     try {
       const alimentos = await AlimentoService.listarTodos()
       return res.status(200).json(alimentos)
@@ -53,6 +80,7 @@ export class AlimentoController {
     }
   }
   static buscarPorId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Alimentos']
     try {
       const alimentoSchema = Joi.object({
         id: Joi.number().positive().required()
@@ -68,6 +96,7 @@ export class AlimentoController {
     }
   }
   static buscarPorDietaId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Alimentos']
     try {
       const alimentoSchema = Joi.object({
         id: Joi.number().positive().required()

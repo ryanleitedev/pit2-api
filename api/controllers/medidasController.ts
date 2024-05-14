@@ -5,6 +5,19 @@ import Joi from 'joi'
 
 export class MedidasController {
   static cadastrar: RequestHandler = async (req, res, next) => {
+     /*
+      #swagger.tags = ['Medidas']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/cadastrarMedidas"
+            }
+          }
+        }
+      }
+    */
     try {
       const medidasSchema = Joi.object({
         clienteId: Joi.number().positive().required(),
@@ -22,6 +35,19 @@ export class MedidasController {
     }
   }
   static atualizar: RequestHandler = async (req, res, next) => {
+    /*
+      #swagger.tags = ['Medidas']
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/atualizarMedidas"
+            }
+          }
+        }
+      }
+    */
     try {
       const medidasSchema = Joi.object({
         id: Joi.number().positive().required(),
@@ -41,6 +67,7 @@ export class MedidasController {
   }
 
   static buscarPorClienteId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Medidas']
     try {
       const medidasSchema = Joi.object({
         id: Joi.number().positive().required()
@@ -55,6 +82,7 @@ export class MedidasController {
     }
   }
   static buscarProgressoPorClienteId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Medidas']
     try {
       const medidasSchema = Joi.object({
         id: Joi.number().positive().required()
