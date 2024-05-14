@@ -16,4 +16,4 @@ COPY . .
 # Expõe a porta 3000 para permitir conexões externas
 EXPOSE 3000
 
-RUN ["npm run", "start:prod"]
+CMD ["npm", "run", "start:prod"]
