@@ -8,9 +8,10 @@ import medidasRouter from './medidas.route'
 
 const routes = Router()
 
-routes.get('/', async (req, res) => {
-  return res.status(200).json({ message: 'Hello World' })
+routes.get('/health', async (req, res) => {
+  return res.status(200).json({ message: 'UP' })
 })
+
 routes.use('/usuario', usuarioRouter)
 routes.use('/nutricionista', nutricionistaRouter)
 routes.use('/alimento', alimentoRouter)
