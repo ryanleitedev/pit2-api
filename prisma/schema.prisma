@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id Int @id @unique @default(autoincrement())
+
+  nome      String @db.VarChar(45)
+  sobrenome String @db.VarChar(45)
+  email     String @unique
+  senha     String
+  telefone  String
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  nutricionista Nutricionista?
+  cliente       Cliente?
+}
+
+model Nutricionista {
+  id Int @id @default(autoincrement())
+
+  usuarioId Int    @unique
+  crn       Int?
+  crm       Int?
+  uf        String @db.Char(2)
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  usuario              Usuario                @relation(fields: [usuarioId], references: [id])
+  nutricionistasDietas NutricionistasDietas[]
+
+  @@unique([crn, crm])
+}
+
+model Cliente {
+  id Int @id @unique @default(autoincrement())
+
+  usuarioId  Int    @unique
+  observacao String @db.VarChar(450)
+  objetivo   String @db.VarChar(45)
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  usuario Usuario        @relation(fields: [usuarioId], references: [id])
+  medidas Medidas[]
+  dieta   Dieta[]
+  fotos   FotosCliente[]
+}
+
+model FotosCliente {
+  id Int @id @unique @default(autoincrement())
+
+  clienteId   Int
+  caminhoFoto String
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  cliente Cliente @relation(fields: [clienteId], references: [id])
+}
+
+model Medidas {
+  id Int @id @unique @default(autoincrement())
+
+  clienteId Int
+  valorImc  Decimal @db.Decimal(4, 2)
+  altura    Int     @db.UnsignedSmallInt
+  peso      Decimal @db.Decimal(4, 1)
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  cliente Cliente @relation(fields: [clienteId], references: [id])
+}
+
+model Dieta {
+  id Int @id @unique @default(autoincrement())
+
+  clienteId    Int
+  objetivoFoco String @db.VarChar(90)
+
+  dietaAtual Boolean @default(false) @db.UnsignedTinyInt()
+  novaDieta  Boolean @default(true) @db.UnsignedTinyInt()
+
+  caloriasTotais     Int? // Soma de Alimento via AlimentosDietas
+  carboidratosTotais Decimal? @db.Decimal(5, 2) // Soma de Alimento via AlimentosDietas
+  proteinasTotais    Decimal? @db.Decimal(5, 2) // Soma de Alimento via AlimentosDietas
+  gordurasTotais     Decimal? @db.Decimal(5, 2) // Soma de Alimento via AlimentosDietas
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  cliente              Cliente                @relation(fields: [clienteId], references: [id])
+  nutricionistasDietas NutricionistasDietas[]
+  alimentosDietas      AlimentosDietas[]
+}
+
+model NutricionistasDietas {
+  dietaId         Int
+  nutricionistaId Int
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  nutricionista Nutricionista @relation(fields: [nutricionistaId], references: [id])
+  dieta         Dieta         @relation(fields: [dietaId], references: [id])
+
+  @@id([nutricionistaId, dietaId])
+}
+
+model Alimento {
+  id Int @id @unique @default(autoincrement())
+
+  nome         String  @db.VarChar(90)
+  calorias     Int
+  carboidratos Decimal @db.Decimal(5, 2)
+  proteinas    Decimal @db.Decimal(5, 2)
+  gorduras     Decimal @db.Decimal(5, 2)
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  alimentosDietas AlimentosDietas[]
+}
+
+model AlimentosDietas {
+  alimentoId Int
+  dietaId    Int
+  horario    DateTime @db.Time()
+
+  pesoGramas Int @db.UnsignedInt
+
+  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataAtualizacao DateTime @updatedAt
+
+  alimento Alimento @relation(fields: [alimentoId], references: [id])
+  dieta    Dieta    @relation(fields: [dietaId], references: [id])
+
+  @@id([alimentoId, dietaId, horario])
+}
