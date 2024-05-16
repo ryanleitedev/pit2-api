@@ -32,7 +32,8 @@ export class DietaService {
                   nome: true
                 }
               }
-            }
+            },
+            orderBy: [{ horario: 'asc' }]
           },
           cliente: {
             select: {
@@ -109,38 +110,40 @@ export class DietaService {
         })
       }
 
-      const _dieta = await prisma.dieta.create({
-        data: {
-          clienteId: dieta.clienteId,
-          dietaAtual: dieta.dietaAtual,
-          novaDieta: false,
-          caloriasTotais: dieta.caloriasTotais,
-          carboidratosTotais: dieta.carboidratosTotais,
-          proteinasTotais: dieta.proteinasTotais,
-          gordurasTotais: dieta.gordurasTotais,
-          objetivoFoco: dieta.objetivoFoco
-        }
-      })
-
-      dieta.alimentos = dieta.alimentos
-        .map(dietaAlimento => {
-          const idAlimento = _alimentos.find(alimento => alimento.id === dietaAlimento.alimentoId)?.id
-          if (!idAlimento) return
-          dietaAlimento.alimentoId = idAlimento
-          dietaAlimento.dietaId = _dieta.id
-          return dietaAlimento
+      await prisma.$transaction(async function (tx) {
+        const _dieta = await tx.dieta.create({
+          data: {
+            clienteId: dieta.clienteId,
+            dietaAtual: dieta.dietaAtual,
+            novaDieta: false,
+            caloriasTotais: dieta.caloriasTotais,
+            carboidratosTotais: dieta.carboidratosTotais,
+            proteinasTotais: dieta.proteinasTotais,
+            gordurasTotais: dieta.gordurasTotais,
+            objetivoFoco: dieta.objetivoFoco
+          }
         })
-        .filter(a => a)
 
-      await prisma.alimentosDietas.createMany({
-        data: dieta.alimentos
-      })
+        dieta.alimentos = dieta.alimentos
+          .map(dietaAlimento => {
+            const idAlimento = _alimentos.find(alimento => alimento.id === dietaAlimento.alimentoId)?.id
+            if (!idAlimento) return
+            dietaAlimento.alimentoId = idAlimento
+            dietaAlimento.dietaId = _dieta.id
+            return dietaAlimento
+          })
+          .filter(a => a)
 
-      await prisma.nutricionistasDietas.create({
-        data: {
-          dietaId: _dieta.id,
-          nutricionistaId: dieta.nutricionista.nutricionistaId
-        }
+        await tx.alimentosDietas.createMany({
+          data: dieta.alimentos
+        })
+
+        await tx.nutricionistasDietas.create({
+          data: {
+            dietaId: _dieta.id,
+            nutricionistaId: dieta.nutricionista.nutricionistaId
+          }
+        })
       })
     } catch (_) {
       throw new Error('Erro ao cadastrar dieta.')

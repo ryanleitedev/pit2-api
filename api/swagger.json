@@ -202,6 +202,29 @@
         }
       }
     },
+    "/nutricionista/clientes/pendentes/{id}": {
+      "get": {
+        "tags": [
+          "Nutricionista"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/alimento/": {
       "post": {
         "tags": [

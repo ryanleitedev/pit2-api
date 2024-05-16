@@ -30,4 +30,21 @@ export class NutricionistaController {
       next(new HttpException({ message }))
     }
   }
+
+  static buscarClientesPendentesPorNutricionistaId: RequestHandler = async (req, res, next) => {
+    // #swagger.tags = ['Nutricionista']
+    try {
+      const nutricionistaSchema = Joi.object({
+        id: Joi.number().positive().allow(0).required()
+      })
+
+      const { error, value } = nutricionistaSchema.validate(req.params)
+      if (error != null) throw new Error(error.message)
+
+      const clientes = await NutricionistaService.buscarClientesPendentesPorNutricionistaId(value.id)
+      return res.status(200).json(clientes)
+    } catch ({ message }) {
+      next(new HttpException({ message }))
+    }
+  }
 }

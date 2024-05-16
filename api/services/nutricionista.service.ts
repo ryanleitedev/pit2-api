@@ -67,4 +67,44 @@ export class NutricionistaService {
       throw new Error('Erro desconhecido.')
     }
   }
+  static async buscarClientesPendentesPorNutricionistaId(id: number) {
+    try {
+      const _clientes = prisma.nutricionistasDietas.findMany({
+        where: {
+          nutricionistaId: id,
+          dieta: {
+            novaDieta: true,
+          }
+        },
+        select: {
+          dieta: {
+            select: {
+              objetivoFoco: true,
+              cliente: {
+                select: {
+                  id: true,
+                  objetivo: true,
+                  observacao: true,
+                  usuario: {
+                    select: {
+                      nome: true,
+                      sobrenome: true,
+                      email: true,
+                      telefone: true
+                    }
+                  }
+                }
+              },
+              dataCriacao: true,
+            }
+          }
+        }
+      })
+      return _clientes
+    } catch (e) {
+      if (e instanceof PrismaClientKnownRequestError)
+        throw new Error('Clientes não encontrados para este nutricionista.')
+      throw new Error('Erro desconhecido.')
+    }
+  }
 }
