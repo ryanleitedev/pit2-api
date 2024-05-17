@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project ./",
-    "deploy": "npm run docs && npm run start:init && npm run start:prod",
+    "deploy": "npm run docs && npx prisma generate && npm run start:prod",
     "docs": "node ./api/utils/swaggerAutogen.ts",
     "start:init": "npm i && npx prisma generate && npx prisma db push",
     "start:dev": "nodemon api/server.ts",
