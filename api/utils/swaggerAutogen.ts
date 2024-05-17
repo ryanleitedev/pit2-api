@@ -30,80 +30,80 @@ const doc = {
   components: {
     schemas: {
       cadastrarAlimento: {
-        $nome: '',
-        $calorias: 0,
-        $carboidratos: 0,
-        $proteinas: 0,
-        $gorduras: 0
+        nome: '',
+        calorias: 0,
+        carboidratos: 0,
+        proteinas: 0,
+        gorduras: 0
       },
       cadastrarAlimentoLista: [
         {
-          $nome: '',
-          $calorias: 0,
-          $carboidratos: 0,
-          $proteinas: 0,
-          $gorduras: 0
+          nome: '',
+          calorias: 0,
+          carboidratos: 0,
+          proteinas: 0,
+          gorduras: 0
         }
       ],
       cadastrarDieta: {
-        $clienteId: 0,
-        $objetivoFoco: '',
-        $dietaAtual: false,
-        $alimentos: [
+        clienteId: 0,
+        objetivoFoco: '',
+        dietaAtual: false,
+        alimentos: [
           {
-            $alimentoId: 0,
-            $horario: '1970-01-01T09:00:00-0',
-            $pesoGramas: 0
+            alimentoId: 0,
+            horario: '1970-01-01T09:00:00Z',
+            pesoGramas: 0
           }
         ],
-        $nutricionista: {
-          $nutricionistaId: 0
+        nutricionista: {
+          nutricionistaId: 0
         }
       },
       atualizarDieta: {
-        $id: 0,
-        $clienteId: 0,
-        $objetivoFoco: '',
-        $dietaAtual: false,
-        $alimentos: [
+        id: 0,
+        clienteId: 0,
+        objetivoFoco: '',
+        dietaAtual: false,
+        alimentos: [
           {
-            $alimentoId: 0,
-            $horario: '1970-01-01T09:00:00-0',
-            $pesoGramas: 0
+            alimentoId: 0,
+            horario: '1970-01-01T09:00:00Z',
+            pesoGramas: 0
           }
         ]
       },
       cadastrarMedidas: {
-        $clienteId: 0,
-        $altura: 0,
-        $peso: 0
+        clienteId: 0,
+        altura: 0,
+        peso: 0
       },
       atualizarMedidas: {
-        $id: 0,
-        $clienteId: 0,
-        $altura: 0,
-        $peso: 0
+        id: 0,
+        clienteId: 0,
+        altura: 0,
+        peso: 0
       },
       usuarioClienteLogin: {
-        $email: '',
-        $senha: ''
+        email: '',
+        senha: ''
       },
       usuarioClienteCadastrar: {
-        $email: '',
-        $senha: '',
-        $nome: '',
-        $sobrenome: '',
-        $telefone: '',
+        email: '',
+        senha: '',
+        nome: '',
+        sobrenome: '',
+        telefone: '',
         cliente: {
           objetivo: '',
           observacao: ''
         }
       },
       usuarioClienteSolicitarDieta: {
-        $clienteId: 0,
-        $objetivoFoco: '',
-        $nutricionista: {
-          $nutricionistaId: 0
+        clienteId: 0,
+        objetivoFoco: '',
+        nutricionista: {
+          nutricionistaId: 0
         }
       },
       usuarioClienteAtualizarPerfil: {
@@ -112,20 +112,20 @@ const doc = {
           observacao: ''
         }
       },
-      usuarioNutricionistaLogin: {
-        $email: '',
-        $senha: ''
+      nutricionistaLogin: {
+        email: '',
+        senha: ''
       },
-      usuarioNutricionistaCadastrar: {
-        $email: '',
-        $senha: '',
-        $nome: '',
-        $sobrenome: '',
-        $telefone: '',
+      nutricionistaCadastrar: {
+        email: '',
+        senha: '',
+        nome: '',
+        sobrenome: '',
+        telefone: '',
         nutricionista: {
           uf: '',
           crm: '',
-          crn: '',
+          crn: ''
         }
       }
     }

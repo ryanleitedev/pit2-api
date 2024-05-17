@@ -138,6 +138,7 @@ export class UsuarioNutricionistaService {
 
       return _usuario
     } catch (e) {
+      console.log(e)
       if (e instanceof PrismaClientKnownRequestError) throw new Error('Nutricionista não encontrado.')
       if (e instanceof Error) throw new Error(e.message)
       throw new Error('Erro desconhecido.')

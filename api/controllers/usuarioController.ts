@@ -7,7 +7,7 @@ import Joi from 'joi'
 export class UsuarioClienteController {
   static login: RequestHandler = async (req, res, next) => {
     /*
-    #swagger.tags = ['Usuário']
+    #swagger.tags = ['Cliente']
       #swagger.requestBody = {
         required: true,
         content: {
@@ -35,7 +35,7 @@ export class UsuarioClienteController {
 
   static cadastrar: RequestHandler = async (req, res, next) => {
     /*
-    #swagger.tags = ['Usuário']
+    #swagger.tags = ['Cliente']
       #swagger.requestBody = {
         required: true,
         content: {
@@ -70,7 +70,7 @@ export class UsuarioClienteController {
 
   static solicitarDieta: RequestHandler = async (req, res, next) => {
     /*
-    #swagger.tags = ['Usuário']
+    #swagger.tags = ['Cliente']
       #swagger.requestBody = {
         required: true,
         content: {
@@ -102,7 +102,7 @@ export class UsuarioClienteController {
 
   static atualizarPerfil: RequestHandler = async (req, res, next) => {
     /*
-    #swagger.tags = ['Usuário']
+    #swagger.tags = ['Cliente']
       #swagger.requestBody = {
         required: true,
         content: {
@@ -135,8 +135,9 @@ export class UsuarioClienteController {
 export class UsuarioNutricionistaController {
   static login: RequestHandler = async (req, res, next) => {
     /*
-    #swagger.tags = ['Usuário']
+    #swagger.tags = ['Nutricionista']
       #swagger.requestBody = {
+        description: "Faz o login de um nutricionista."
         required: true,
         content: {
           "application/json": {
@@ -163,8 +164,9 @@ export class UsuarioNutricionistaController {
 
   static cadastrar: RequestHandler = async (req, res, next) => {
     /*
-    #swagger.tags = ['Usuário']
+    #swagger.tags = ['Nutricionista']
       #swagger.requestBody = {
+        description: "Faz o cadastro de um nutricionista."
         required: true,
         content: {
           "application/json": {
