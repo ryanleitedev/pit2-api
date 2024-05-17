@@ -118,7 +118,6 @@ export class UsuarioNutricionistaService {
           }
         },
         select: {
-          id: true,
           nome: true,
           sobrenome: true,
           email: true,
@@ -127,6 +126,7 @@ export class UsuarioNutricionistaService {
           dataAtualizacao: true,
           nutricionista: {
             select: {
+              id: true,
               crm: true,
               crn: true,
               uf: true
