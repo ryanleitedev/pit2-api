@@ -31,7 +31,7 @@
     "/usuario/cliente/login": {
       "post": {
         "tags": [
-          "Usuário"
+          "Cliente"
         ],
         "description": "",
         "responses": {
@@ -54,7 +54,7 @@
     "/usuario/cliente/cadastrar": {
       "post": {
         "tags": [
-          "Usuário"
+          "Cliente"
         ],
         "description": "",
         "responses": {
@@ -77,7 +77,7 @@
     "/usuario/cliente/solicitardieta": {
       "post": {
         "tags": [
-          "Usuário"
+          "Cliente"
         ],
         "description": "",
         "responses": {
@@ -100,7 +100,7 @@
     "/usuario/cliente/atualizarperfil": {
       "put": {
         "tags": [
-          "Usuário"
+          "Cliente"
         ],
         "description": "",
         "responses": {
@@ -123,7 +123,7 @@
     "/usuario/nutricionista/login": {
       "post": {
         "tags": [
-          "Usuário"
+          "Cliente"
         ],
         "description": "",
         "responses": {
@@ -136,7 +136,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/usuarioClienteLogin"
+                "$ref": "#/components/schemas/usuarioNutricionistaLogin"
               }
             }
           }
@@ -146,7 +146,7 @@
     "/usuario/nutricionista/cadastrar": {
       "post": {
         "tags": [
-          "Usuário"
+          "Cliente"
         ],
         "description": "",
         "responses": {
@@ -159,7 +159,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/usuarioClienteCadastrar"
+                "$ref": "#/components/schemas/usuarioNutricionistaCadastrar"
               }
             }
           }
@@ -534,14 +534,7 @@
             "type": "number",
             "example": 0
           }
-        },
-        "required": [
-          "nome",
-          "calorias",
-          "carboidratos",
-          "proteinas",
-          "gorduras"
-        ]
+        }
       },
       "cadastrarAlimentoLista": {
         "type": "array",
@@ -568,14 +561,7 @@
               "type": "number",
               "example": 0
             }
-          },
-          "required": [
-            "nome",
-            "calorias",
-            "carboidratos",
-            "proteinas",
-            "gorduras"
-          ]
+          }
         }
       },
       "cadastrarDieta": {
@@ -604,18 +590,13 @@
                 },
                 "horario": {
                   "type": "string",
-                  "example": "1970-01-01T09:00:00-0"
+                  "example": "1970-01-01T09:00:00Z"
                 },
                 "pesoGramas": {
                   "type": "number",
                   "example": 0
                 }
-              },
-              "required": [
-                "alimentoId",
-                "horario",
-                "pesoGramas"
-              ]
+              }
             }
           },
           "nutricionista": {
@@ -625,19 +606,9 @@
                 "type": "number",
                 "example": 0
               }
-            },
-            "required": [
-              "nutricionistaId"
-            ]
+            }
           }
-        },
-        "required": [
-          "clienteId",
-          "objetivoFoco",
-          "dietaAtual",
-          "alimentos",
-          "nutricionista"
-        ]
+        }
       },
       "atualizarDieta": {
         "type": "object",
@@ -669,28 +640,16 @@
                 },
                 "horario": {
                   "type": "string",
-                  "example": "1970-01-01T09:00:00-0"
+                  "example": "1970-01-01T09:00:00Z"
                 },
                 "pesoGramas": {
                   "type": "number",
                   "example": 0
                 }
-              },
-              "required": [
-                "alimentoId",
-                "horario",
-                "pesoGramas"
-              ]
+              }
             }
           }
-        },
-        "required": [
-          "id",
-          "clienteId",
-          "objetivoFoco",
-          "dietaAtual",
-          "alimentos"
-        ]
+        }
       },
       "cadastrarMedidas": {
         "type": "object",
@@ -707,12 +666,7 @@
             "type": "number",
             "example": 0
           }
-        },
-        "required": [
-          "clienteId",
-          "altura",
-          "peso"
-        ]
+        }
       },
       "atualizarMedidas": {
         "type": "object",
@@ -733,13 +687,7 @@
             "type": "number",
             "example": 0
           }
-        },
-        "required": [
-          "id",
-          "clienteId",
-          "altura",
-          "peso"
-        ]
+        }
       },
       "usuarioClienteLogin": {
         "type": "object",
@@ -752,11 +700,7 @@
             "type": "string",
             "example": ""
           }
-        },
-        "required": [
-          "email",
-          "senha"
-        ]
+        }
       },
       "usuarioClienteCadastrar": {
         "type": "object",
@@ -794,14 +738,7 @@
               }
             }
           }
-        },
-        "required": [
-          "email",
-          "senha",
-          "nome",
-          "sobrenome",
-          "telefone"
-        ]
+        }
       },
       "usuarioClienteSolicitarDieta": {
         "type": "object",
@@ -821,17 +758,9 @@
                 "type": "number",
                 "example": 0
               }
-            },
-            "required": [
-              "nutricionistaId"
-            ]
+            }
           }
-        },
-        "required": [
-          "clienteId",
-          "objetivoFoco",
-          "nutricionista"
-        ]
+        }
       },
       "usuarioClienteAtualizarPerfil": {
         "type": "object",
@@ -862,11 +791,7 @@
             "type": "string",
             "example": ""
           }
-        },
-        "required": [
-          "email",
-          "senha"
-        ]
+        }
       },
       "usuarioNutricionistaCadastrar": {
         "type": "object",
@@ -908,14 +833,7 @@
               }
             }
           }
-        },
-        "required": [
-          "email",
-          "senha",
-          "nome",
-          "sobrenome",
-          "telefone"
-        ]
+        }
       }
     }
   }
