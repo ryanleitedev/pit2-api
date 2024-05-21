@@ -46,6 +46,8 @@ export class UsuarioClienteService {
           telefone: true,
           dataCriacao: true,
           dataAtualizacao: true,
+          dataNascimento: true,
+          genero: true,
           cliente: {
             select: {
               id: true,
@@ -128,6 +130,8 @@ export class UsuarioNutricionistaService {
           telefone: true,
           dataCriacao: true,
           dataAtualizacao: true,
+          dataNascimento: true,
+          genero: true,
           nutricionista: {
             select: {
               id: true,
