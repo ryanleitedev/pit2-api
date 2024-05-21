@@ -721,6 +721,14 @@
             "type": "string",
             "example": ""
           },
+          "dataNascimento": {
+            "type": "string",
+            "example": ""
+          },
+          "genero": {
+            "type": "string",
+            "example": ""
+          },
           "telefone": {
             "type": "string",
             "example": ""
@@ -750,6 +758,14 @@
           "objetivoFoco": {
             "type": "string",
             "example": ""
+          },
+          "pesoAtual": {
+            "type": "number",
+            "example": 0
+          },
+          "alturaAtual": {
+            "type": "number",
+            "example": 0
           },
           "nutricionista": {
             "type": "object",
@@ -809,6 +825,14 @@
             "example": ""
           },
           "sobrenome": {
+            "type": "string",
+            "example": ""
+          },
+          "dataNascimento": {
+            "type": "string",
+            "example": ""
+          },
+          "genero": {
             "type": "string",
             "example": ""
           },
