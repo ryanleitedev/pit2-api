@@ -16,13 +16,13 @@ datasource db {
 model Usuario {
   id Int @id @unique @default(autoincrement())
 
-  nome           String   @db.VarChar(45)
-  sobrenome      String   @db.VarChar(45)
-  email          String   @unique
+  nome           String    @db.VarChar(45)
+  sobrenome      String    @db.VarChar(45)
+  email          String    @unique
   senha          String
   telefone       String
-  dataNascimento DateTime @db.DateTime()
-  genero         String   @db.Char(1)
+  dataNascimento DateTime? @db.DateTime()
+  genero         String?   @db.Char(1)
 
   dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
