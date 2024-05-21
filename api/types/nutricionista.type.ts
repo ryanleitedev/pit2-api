@@ -7,6 +7,6 @@ export type NutricionistaType = BaseType & {
   crn?: number
   crm?: number
   uf: string
-  usuario: UsuarioNutricionistaType
+  usuario?: UsuarioNutricionistaType
   dietas?: DietaType[]
 }

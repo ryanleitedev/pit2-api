@@ -16,13 +16,15 @@ datasource db {
 model Usuario {
   id Int @id @unique @default(autoincrement())
 
-  nome      String @db.VarChar(45)
-  sobrenome String @db.VarChar(45)
-  email     String @unique
-  senha     String
-  telefone  String
+  nome           String   @db.VarChar(45)
+  sobrenome      String   @db.VarChar(45)
+  email          String   @unique
+  senha          String
+  telefone       String
+  dataNascimento DateTime @db.DateTime()
+  genero         String   @db.Char(1)
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   nutricionista Nutricionista?
@@ -37,7 +39,7 @@ model Nutricionista {
   crm       Int?
   uf        String @db.Char(2)
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   usuario              Usuario                @relation(fields: [usuarioId], references: [id])
@@ -53,7 +55,7 @@ model Cliente {
   observacao String @db.VarChar(450)
   objetivo   String @db.VarChar(45)
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   usuario Usuario        @relation(fields: [usuarioId], references: [id])
@@ -68,7 +70,7 @@ model FotosCliente {
   clienteId   Int
   caminhoFoto String
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   cliente Cliente @relation(fields: [clienteId], references: [id])
@@ -82,7 +84,7 @@ model Medidas {
   altura    Int     @db.UnsignedSmallInt
   peso      Decimal @db.Decimal(4, 1)
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   cliente Cliente @relation(fields: [clienteId], references: [id])
@@ -102,7 +104,7 @@ model Dieta {
   proteinasTotais    Decimal? @db.Decimal(5, 2) // Soma de Alimento via AlimentosDietas
   gordurasTotais     Decimal? @db.Decimal(5, 2) // Soma de Alimento via AlimentosDietas
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   cliente              Cliente                @relation(fields: [clienteId], references: [id])
@@ -114,7 +116,7 @@ model NutricionistasDietas {
   dietaId         Int
   nutricionistaId Int
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   nutricionista Nutricionista @relation(fields: [nutricionistaId], references: [id])
@@ -132,7 +134,7 @@ model Alimento {
   proteinas    Decimal @db.Decimal(5, 2)
   gorduras     Decimal @db.Decimal(5, 2)
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   alimentosDietas AlimentosDietas[]
@@ -145,7 +147,7 @@ model AlimentosDietas {
 
   pesoGramas Int @db.UnsignedInt
 
-  dataCriacao     DateTime @default(now()) @db.Timestamp(3)
+  dataCriacao     DateTime @default(now()) @db.Timestamp(0)
   dataAtualizacao DateTime @updatedAt
 
   alimento Alimento @relation(fields: [alimentoId], references: [id])

@@ -93,6 +93,8 @@ const doc = {
         senha: '',
         nome: '',
         sobrenome: '',
+        dataNascimento: '',
+        genero: '',
         telefone: '',
         cliente: {
           objetivo: '',
@@ -102,6 +104,8 @@ const doc = {
       usuarioClienteSolicitarDieta: {
         clienteId: 0,
         objetivoFoco: '',
+        pesoAtual: 0,
+        alturaAtual: 0,
         nutricionista: {
           nutricionistaId: 0
         }
@@ -112,15 +116,17 @@ const doc = {
           observacao: ''
         }
       },
-      nutricionistaLogin: {
+      usuarioNutricionistaLogin: {
         email: '',
         senha: ''
       },
-      nutricionistaCadastrar: {
+      usuarioNutricionistaCadastrar: {
         email: '',
         senha: '',
         nome: '',
         sobrenome: '',
+        dataNascimento: '',
+        genero: '',
         telefone: '',
         nutricionista: {
           uf: '',

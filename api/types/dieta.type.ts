@@ -10,6 +10,9 @@ export type DietaType = BaseType & {
   dietaAtual: boolean
   novaDieta: boolean
 
+  pesoAtual: Decimal
+  alturaAtual: Decimal
+
   caloriasTotais?: number
   carboidratosTotais?: Decimal
   proteinasTotais?: Decimal

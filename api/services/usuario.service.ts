@@ -12,6 +12,8 @@ export class UsuarioClienteService {
           sobrenome: usuario.sobrenome,
           email: usuario.email,
           senha: sha256(usuario.senha),
+          dataNascimento: usuario.dataNascimento,
+          genero: usuario.genero,
           telefone: usuario.telefone,
           cliente: {
             create: {
@@ -92,6 +94,8 @@ export class UsuarioNutricionistaService {
           sobrenome: usuario.sobrenome,
           email: usuario.email,
           senha: sha256(usuario.senha),
+          dataNascimento: usuario.dataNascimento,
+          genero: usuario.genero,
           telefone: usuario.telefone,
           nutricionista: {
             create: {

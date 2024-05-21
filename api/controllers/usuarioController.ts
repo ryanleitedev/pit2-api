@@ -53,6 +53,8 @@ export class UsuarioClienteController {
         senha: Joi.string().required(),
         nome: Joi.string().required(),
         sobrenome: Joi.string().required(),
+        dataNascimento: Joi.date().max('now').required(),
+        genero: Joi.string().length(1).required(),
         telefone: Joi.string().required(),
         cliente: Joi.object({
           objetivo: Joi.string().max(45),
@@ -183,6 +185,8 @@ export class UsuarioNutricionistaController {
         senha: Joi.string().required(),
         nome: Joi.string().required(),
         sobrenome: Joi.string().required(),
+        dataNascimento: Joi.date().max('now').required(),
+        genero: Joi.string().length(1).required(),
         telefone: Joi.string().required(),
         nutricionista: Joi.object({
           uf: Joi.string().length(2).required(),
