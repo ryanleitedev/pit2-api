@@ -8,7 +8,7 @@
     "build": "tsc --project ./",
     "deploy": "npm run start:init && npm run start:prod",
     "docs": "node ./api/utils/swaggerAutogen.ts",
-    "start:init": "npm i && npx prisma generate && npx prisma db push",
+    "start:init": "npm i && npx prisma generate && npx prisma db push --accept-data-loss",
     "start:dev": "nodemon api/server.ts",
     "start:prod": "ts-node --transpileOnly -r tsconfig-paths/register api/server.ts",
     "restart:dev": "prisma generate && prisma db push --force-reset"
