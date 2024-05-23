@@ -73,12 +73,13 @@ export class NutricionistaService {
         where: {
           nutricionistaId: id,
           dieta: {
-            novaDieta: true,
+            novaDieta: true
           }
         },
         select: {
           dieta: {
             select: {
+              id: true,
               objetivoFoco: true,
               cliente: {
                 select: {
@@ -95,7 +96,7 @@ export class NutricionistaService {
                   }
                 }
               },
-              dataCriacao: true,
+              dataCriacao: true
             }
           }
         }
