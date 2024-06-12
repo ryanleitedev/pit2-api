@@ -85,6 +85,26 @@ export class UsuarioClienteService {
       throw new Error('Erro ao atualizar o perfil.')
     }
   }
+
+  static async buscarGenero(clienteId: number) {
+    try{
+      const _usuario = await prisma.usuario.findFirstOrThrow({
+        where: {
+          cliente: {
+            id: clienteId
+          }
+        },
+        select: {
+          genero: true,
+        }
+      })
+      return _usuario
+    } catch (e) {
+      console.log(e)
+      if (e instanceof Error) throw new Error(e.message)
+      throw new Error('Erro desconhecido.')
+    }
+  }
 }
 
 export class UsuarioNutricionistaService {

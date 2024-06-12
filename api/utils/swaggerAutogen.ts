@@ -76,7 +76,10 @@ const doc = {
       cadastrarMedidas: {
         clienteId: 0,
         altura: 0,
-        peso: 0
+        peso: 0,
+        circunferenciaQuadril: 0,
+        circunferenciaPescoco: 0,
+        circunferenciaCintura: 0
       },
       atualizarMedidas: {
         id: 0,

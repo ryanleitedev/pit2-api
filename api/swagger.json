@@ -7,7 +7,10 @@
   },
   "servers": [
     {
-      "url": "https://pit2-api.pd8edx.easypanel.host/api"
+      "url": "https://localhost:3000/api"
+    },
+    {
+      "url": "http://localhost:3000/api"
     }
   ],
   "tags": [
@@ -136,7 +139,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/usuarioNutricionistaLogin"
+                "$ref": "#/components/schemas/usuarioClienteLogin"
               }
             }
           }
@@ -159,7 +162,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/usuarioNutricionistaCadastrar"
+                "$ref": "#/components/schemas/usuarioClienteCadastrar"
               }
             }
           }
@@ -663,6 +666,18 @@
             "example": 0
           },
           "peso": {
+            "type": "number",
+            "example": 0
+          },
+          "circunferenciaQuadril": {
+            "type": "number",
+            "example": 0
+          },
+          "circunferenciaPescoco": {
+            "type": "number",
+            "example": 0
+          },
+          "circunferenciaCintura": {
             "type": "number",
             "example": 0
           }

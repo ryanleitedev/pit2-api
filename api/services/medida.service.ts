@@ -1,17 +1,33 @@
 import { MedidasType } from '@api/types/medidas.type'
 import { prisma } from '@api/utils/prisma'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
+import {UsuarioClienteService} from "@api/services/usuario.service";
+import {calculateFemaleBFP, calculateMaleBFP} from "@api/utils/calcBf";
 
 export class MedidasService {
   static async cadastrar(medidas: MedidasType) {
     try {
       medidas.valorImc = medidas.peso / Math.pow(medidas.altura / 100, 2)
+      const { genero } = await UsuarioClienteService.buscarGenero(medidas.clienteId)
+
+      medidas.valorBf = genero === 'M' ? calculateMaleBFP(
+          medidas.circunferenciaCintura, medidas.circunferenciaPescoco, medidas.altura
+          )
+          : calculateFemaleBFP(
+              medidas.circunferenciaCintura, medidas.circunferenciaQuadril,
+              medidas.circunferenciaPescoco, medidas.altura
+          )
+
       await prisma.medidas.create({
         data: {
           clienteId: medidas.clienteId,
+          valorBf: medidas.valorBf,
           valorImc: medidas.valorImc,
           altura: medidas.altura,
           peso: medidas.peso,
+          medidaCintura: medidas.circunferenciaCintura,
+          medidaPescoco: medidas.circunferenciaPescoco,
+          medidaQuadril: medidas.circunferenciaQuadril,
         }
       })
     } catch (_) {
@@ -79,8 +95,12 @@ export class MedidasService {
           id: true,
           clienteId: true,
           valorImc: true,
+          valorBf: true,
           altura: true,
           peso: true,
+          medidaCintura: true,
+          medidaPescoco: true,
+          medidaQuadril: true,
           dataCriacao: true,
           dataAtualizacao: true
         }
@@ -103,8 +123,12 @@ export class MedidasService {
           id: true,
           clienteId: true,
           valorImc: true,
+          valorBf: true,
           altura: true,
           peso: true,
+          medidaCintura: true,
+          medidaPescoco: true,
+          medidaQuadril: true,
           dataCriacao: true,
           dataAtualizacao: true
         }

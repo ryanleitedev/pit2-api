@@ -41,6 +41,7 @@ export class NutricionistaService {
               objetivoFoco: true,
               novaDieta: true,
               dietaAtual: true,
+              dataCriacao: true,
               cliente: {
                 select: {
                   id: true,

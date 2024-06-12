@@ -90,7 +90,8 @@ export class UsuarioClienteController {
         objetivoFoco: Joi.string(),
         nutricionista: Joi.object({
           nutricionistaId: Joi.number().positive().required()
-        }).required()
+        }).required(),
+        pesoAtual: Joi.number().required()
       }).required()
 
       const { error, value } = dietaSchema.validate(req.body)

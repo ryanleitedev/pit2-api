@@ -81,8 +81,14 @@ model Medidas {
 
   clienteId Int
   valorImc  Decimal @db.Decimal(4, 2)
+  valorBf   Decimal @db.Decimal(4, 2) @default(0)
   altura    Int     @db.UnsignedSmallInt
   peso      Decimal @db.Decimal(4, 1)
+
+  medidaCintura Decimal @db.Decimal(4, 2) @default(0)
+  medidaPescoco Decimal @db.Decimal(4, 2) @default(0)
+  medidaQuadril Decimal @db.Decimal(4, 2) @default(0)
+
 
   dataCriacao     DateTime @default(now()) @db.Timestamp(3)
   dataAtualizacao DateTime @updatedAt

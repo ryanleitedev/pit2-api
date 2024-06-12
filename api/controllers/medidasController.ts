@@ -22,7 +22,10 @@ export class MedidasController {
       const medidasSchema = Joi.object({
         clienteId: Joi.number().positive().required(),
         altura: Joi.number().positive().required(),
-        peso: Joi.number().positive().required()
+        peso: Joi.number().positive().required(),
+        circunferenciaPescoco: Joi.number().required(),
+        circunferenciaCintura: Joi.number().required(),
+        circunferenciaQuadril: Joi.number(),
       }).required()
 
       const { error, value } = medidasSchema.validate(req.body)
