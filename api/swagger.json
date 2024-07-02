@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api"
+      "url": "https://pit2-api.pd8edx.easypanel.host/api"
     }
   ],
   "tags": [
