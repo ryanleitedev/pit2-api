@@ -87,6 +87,7 @@ export class NutricionistaService {
                   id: true,
                   objetivo: true,
                   observacao: true,
+                  tipoPerfil: true,
                   usuario: {
                     select: {
                       nome: true,
