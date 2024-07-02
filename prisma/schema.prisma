@@ -54,6 +54,7 @@ model Cliente {
   usuarioId  Int    @unique
   observacao String @db.VarChar(450)
   objetivo   String @db.VarChar(45)
+  tipoPerfil String @db.VarChar(45)
 
   dataCriacao     DateTime @default(now()) @db.Timestamp(3)
   dataAtualizacao DateTime @updatedAt

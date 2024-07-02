@@ -119,9 +119,11 @@ export class UsuarioClienteController {
     */
     try {
       const usuarioSchema = Joi.object({
+        id: Joi.number().positive().required(),
         cliente: Joi.object({
           objetivo: Joi.string().max(45),
-          observacao: Joi.string().max(450)
+          observacao: Joi.string().max(450),
+          tipoPerfil: Joi.string().max(45)
         })
       }).required()
       const { error, value } = usuarioSchema.validate(req.body)

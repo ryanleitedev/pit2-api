@@ -18,7 +18,8 @@ export class UsuarioClienteService {
           cliente: {
             create: {
               objetivo: usuario.cliente?.objetivo || '',
-              observacao: usuario.cliente?.observacao || ''
+              observacao: usuario.cliente?.observacao || '',
+              tipoPerfil: usuario.cliente?.tipoPerfil || '',
             }
           }
         }
@@ -52,7 +53,8 @@ export class UsuarioClienteService {
             select: {
               id: true,
               objetivo: true,
-              observacao: true
+              observacao: true,
+              tipoPerfil: true,
             }
           }
         }
@@ -76,7 +78,8 @@ export class UsuarioClienteService {
           cliente: {
             update: {
               objetivo: usuario.cliente.objetivo,
-              observacao: usuario.cliente.observacao
+              observacao: usuario.cliente.observacao,
+              tipoPerfil: usuario.cliente.tipoPerfil
             }
           }
         }

@@ -8,6 +8,7 @@ export type ClienteType = BaseType & {
   usuarioId: number
   observacao: string
   objetivo: string
+  tipoPerfil: string
 
   usuario?: UsuarioClienteType
   medidas?: MedidasType[]

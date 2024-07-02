@@ -3,6 +3,7 @@ import { ClienteType } from './cliente.type'
 import { NutricionistaType } from './nutricionista.type'
 
 type BaseUsuario = {
+  id?: string
   nome: string
   sobrenome: string
   email: string
